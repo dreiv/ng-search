@@ -1,0 +1,32 @@
+.container {
+  position: absolute;
+}
+
+.container ul {
+  position: relative;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  animation: slideDown .1s;
+}
+
+.container ul:empty{
+  border: none;
+}
+
+.container ul li {
+  padding: 2px 5px;
+  border-bottom: 1px solid #eee;
+}
+
+@keyframes slideDown {
+  0% {
+    transform:  translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}

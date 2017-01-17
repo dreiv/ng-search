@@ -1,4 +1,5 @@
-<input type="text" [formControl]="query"/>
-<ul>
-  <li *ngFor="let item of suggestions | async">{{item}}</li>
-</ul>
+<div class="container">
+  <input type="text" [formControl]="query"/>
+  <ul><li *ngFor="let item of suggestions | async">{{item}}</li></ul>
+</div>
+

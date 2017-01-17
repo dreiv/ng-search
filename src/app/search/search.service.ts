@@ -3,11 +3,11 @@ import { URLSearchParams, Jsonp } from "@angular/http";
 import 'rxjs/add/operator/map';
 
 @Injectable()
-export class SearchService {
+export class SuggestService {
 
   constructor(private jsonp: Jsonp) {}
 
-  search(query: string) {
+  suggest(query: string) {
     var search = new URLSearchParams()
     search.set('action', 'opensearch');
     search.set('search', query);

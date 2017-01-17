@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService} from "./search.service";
+import { SuggestService} from "./search.service";
 import { FormControl, AbstractControl } from "@angular/forms";
 import { Observable } from "rxjs";
 import 'rxjs/add/operator/debounceTime';
@@ -13,15 +13,15 @@ import 'rxjs/add/operator/switchMap';
 })
 export class SearchComponent implements OnInit {
   query: AbstractControl = new FormControl();
-  items: Observable<Array<string>>;
+  suggestions: Observable<Array<string>>;
 
-  constructor(private searchService: SearchService) {}
+  constructor(private suggestService: SuggestService) {}
 
   ngOnInit(){
-    this.items = this.query.valueChanges
+    this.suggestions = this.query.valueChanges
       .debounceTime(400)
       .distinctUntilChanged()
-      .switchMap(query => this.searchService.search(query));
+      .switchMap(query => this.suggestService.suggest(query));
   }
 
 }

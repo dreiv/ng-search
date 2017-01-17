@@ -1,6 +1,6 @@
 import { NgSearchPage } from './app.po';
 
-describe('ng-search App', function() {
+describe('ng-suggest App', function() {
   let page: NgSearchPage;
 
   beforeEach(() => {

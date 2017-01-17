@@ -5,7 +5,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-import { SearchService } from "./search/search.service";
+import { SuggestService } from "./search/search.service";
 
 @NgModule({
   declarations: [
@@ -19,7 +19,7 @@ import { SearchService } from "./search/search.service";
     JsonpModule,
     ReactiveFormsModule
   ],
-  providers: [SearchService],
+  providers: [SuggestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

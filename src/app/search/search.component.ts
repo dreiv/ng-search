@@ -15,7 +15,7 @@ enum Key {
 })
 export class SearchComponent implements OnInit, OnDestroy {
     query: FormControl = new FormControl();
-    suggestions: Observable<Array<string>>;
+    suggestions: string[];
     suggestionIndex: number;
 
     subscriptions: Subscription[];
@@ -26,10 +26,13 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        this.suggestions = this.query.valueChanges
+        this.query.valueChanges
             .debounceTime(400)
             .distinctUntilChanged()
-            .switchMap(query => this.suggestService.suggest(query));
+            .switchMap(query => this.suggestService.suggest(query))
+            .subscribe((suggestions: string[]) => {
+                this.suggestions = suggestions;
+            });
 
         this.subscriptions = [
             this.navigateWithArrows()
@@ -47,7 +50,7 @@ export class SearchComponent implements OnInit, OnDestroy {
             .map((e: any) => e.keyCode)
             .subscribe((keyCode: number) => {
                 let step = keyCode === Key.ArrowDown ? 1 : -1;
-                const topLimit = this.suggestions.toArray.length;
+                const topLimit = this.suggestions.length;
                 const bottomLimit = 0;
                 this.suggestionIndex += step;
                 if (this.suggestionIndex === topLimit + 1) {

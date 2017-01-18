@@ -5,6 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 
 enum Key {
     ArrowUp = 38,
+    ArrowRight = 39,
     ArrowDown = 40
 }
 
@@ -45,10 +46,17 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     navigateWithArrows() {
         return Observable.fromEvent(this.element.nativeElement, 'keydown')
-            .filter((e: any) => e.keyCode === Key.ArrowDown || e.keyCode === Key.ArrowUp)
+            .filter((e: any) => e.keyCode === Key.ArrowUp ||
+                                e.keyCode === Key.ArrowRight ||
+                                e.keyCode === Key.ArrowDown)
             .map((e: any) => e.keyCode)
             .subscribe((keyCode: number) => {
-                let step = keyCode === Key.ArrowDown ? 1 : -1;
+                if(keyCode === Key.ArrowRight) {
+                  this.query.setValue(this.suggestions[this.suggestionIndex]);
+                  return;
+                }
+
+                const step = keyCode === Key.ArrowDown ? 1 : -1;
                 const topLimit = this.suggestions.length - 1;
                 const bottomLimit = 0;
                 this.suggestionIndex += step;

@@ -5,7 +5,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
-import { SuggestService } from "./search/search.service";
+import { SuggestService } from "./search/suggest.service";
 
 @NgModule({
   declarations: [

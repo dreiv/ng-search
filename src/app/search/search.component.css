@@ -36,3 +36,7 @@
   padding: 2px;
   border-bottom: 1px solid #eee;
 }
+
+.container ul li.selected {
+  background: tomato;
+}

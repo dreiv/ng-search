@@ -13,7 +13,7 @@ export class SuggestService {
         search.set('search', query);
         search.set('format', 'json');
         return this.jsonp
-            .get('http://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', {search})
+            .get('https://en.wikipedia.org/w/api.php?callback=JSONP_CALLBACK', {search})
             .map((response) => response.json()[1]);
     }
 }

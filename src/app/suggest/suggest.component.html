@@ -1,5 +1,6 @@
 <div class="container">
     <label for="suggestInput">Search: </label>
+    <input type="text" disabled [formControl]="suggestText"/>
     <input type="search" id="suggestInput" [formControl]="query"/>
     <ul><li *ngFor="let item of suggestions; let i = index"
             [class.selected]="suggestionIndex === i">{{item}}</li></ul>

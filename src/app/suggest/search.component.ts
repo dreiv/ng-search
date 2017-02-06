@@ -15,6 +15,7 @@ enum Key {
 })
 export class SuggestComponent implements OnInit, OnDestroy {
     query: FormControl = new FormControl();
+    suggestText: FormControl = new FormControl();
     suggestions: string[];
     suggestionIndex: number = 0;
 
@@ -59,6 +60,7 @@ export class SuggestComponent implements OnInit, OnDestroy {
                 if (this.suggestionIndex === bottomLimit - 1) {
                     this.suggestionIndex = topLimit;
                 }
+                this.suggestText.setValue(this.suggestions[this.suggestionIndex]);
             });
     }
 

@@ -1,10 +1,25 @@
 .container {
   position: relative;
+  white-space: nowrap;
 }
 
-.container input {
+.container .suggest{
+  border: none;
   width: 100%;
-  box-sizing: border-box;
+  background: transparent;
+  position: absolute;
+  z-index: 6;
+  outline: none;
+  border-bottom: 1px solid #757575;
+}
+
+.container .suggestDisabled{
+  border: none;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+  background-color: transparent;
+  color: silver;
 }
 
 .container ul {
@@ -13,9 +28,10 @@
   margin: 0;
   padding: 0;
   width: 100%;
-  border: 1px solid #ccc;
+  border: 1px solid #eee;
   border-top: 0;
   box-sizing: border-box;
+  top:17px;
 }
 
 .container ul:empty{
@@ -24,7 +40,6 @@
 
 .container ul li {
   padding: 2px;
-  border-bottom: 1px solid #eee;
 }
 
 .container ul li.selected {

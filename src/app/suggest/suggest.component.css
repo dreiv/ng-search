@@ -3,7 +3,7 @@
   white-space: nowrap;
 }
 
-.container .suggest{
+.container input[type="search"]{
   border: none;
   width: 100%;
   background: transparent;
@@ -13,7 +13,7 @@
   border-bottom: 1px solid #757575;
 }
 
-.container .suggestDisabled{
+.container input[disabled]{
   border: none;
   width: 100%;
   position: absolute;

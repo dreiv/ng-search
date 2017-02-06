@@ -46,9 +46,9 @@ export class SuggestComponent implements OnInit, OnDestroy {
 
     navigateWithArrows() {
         return Observable.fromEvent(this.element.nativeElement, 'keydown')
-            .filter((e: any) => e.keyCode === Key.ArrowUp ||
-                                e.keyCode === Key.ArrowDown)
-            .map((e: any) => e.keyCode)
+            .filter((event: any) => event.keyCode === Key.ArrowUp ||
+                                event.keyCode === Key.ArrowDown)
+            .map((event: any) => event.keyCode)
             .subscribe((keyCode: number) => {
                 const step = keyCode === Key.ArrowDown ? 1 : -1;
                 const topLimit = this.suggestions.length - 1;

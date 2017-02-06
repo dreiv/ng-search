@@ -4,13 +4,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
-import { SuggestService } from "./search/suggest.service";
+import { SuggestComponent } from './suggest/search.component';
+import { SuggestService } from "./services/suggest.service";
 
 @NgModule({
   declarations: [
     AppComponent,
-    SearchComponent
+    SuggestComponent
   ],
   imports: [
     BrowserModule,

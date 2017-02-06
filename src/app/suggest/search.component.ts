@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ElementRef } from '@angular/core';
-import { SuggestService } from './suggest.service';
+import { SuggestService } from '../services/suggest.service';
 import { FormControl } from '@angular/forms';
 import { Observable, Subscription } from 'rxjs';
 
@@ -10,10 +10,10 @@ enum Key {
 
 @Component({
     selector: 'app-search',
-    templateUrl: './search.component.html',
-    styleUrls: ['./search.component.css']
+    templateUrl: 'suggest.component.html',
+    styleUrls: ['suggest.component.css']
 })
-export class SearchComponent implements OnInit, OnDestroy {
+export class SuggestComponent implements OnInit, OnDestroy {
     query: FormControl = new FormControl();
     suggestions: string[];
     suggestionIndex: number = 0;

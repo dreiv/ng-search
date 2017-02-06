@@ -49,7 +49,6 @@ export class SearchComponent implements OnInit, OnDestroy {
                                 e.keyCode === Key.ArrowDown)
             .map((e: any) => e.keyCode)
             .subscribe((keyCode: number) => {
-
                 const step = keyCode === Key.ArrowDown ? 1 : -1;
                 const topLimit = this.suggestions.length - 1;
                 const bottomLimit = 0;

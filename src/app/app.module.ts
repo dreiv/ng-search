@@ -6,11 +6,13 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { SuggestComponent } from './suggest/search.component';
 import { SuggestService } from "./services/suggest.service";
+import { SuggestItemComponent } from './suggest/suggest-item/suggest-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SuggestComponent
+    SuggestComponent,
+    SuggestItemComponent
   ],
   imports: [
     BrowserModule,

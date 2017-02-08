@@ -15,9 +15,10 @@ enum Key {
 })
 export class SuggestComponent implements OnInit, OnDestroy {
     query: FormControl = new FormControl();
-    suggestText: FormControl = new FormControl();
+    selectedSuggestionText: FormControl = new FormControl();
+    selectedSuggestionIndex: number;
+
     suggestions: string[];
-    suggestionIndex: number = 0;
 
     subscriptions: Subscription[];
 
@@ -34,7 +35,7 @@ export class SuggestComponent implements OnInit, OnDestroy {
             .switchMap(query => this.suggestService.getSuggestions(query))
             .subscribe((suggestions: string[]) => {
               this.suggestions = suggestions;
-              this.suggestionIndex = suggestions.length;
+              this.selectedSuggestionIndex = suggestions.length;
             }),
           this.navigateWithArrows()
         ];
@@ -54,14 +55,14 @@ export class SuggestComponent implements OnInit, OnDestroy {
                 const step = keyCode === Key.ArrowDown ? 1 : -1;
                 const topLimit = this.suggestions.length;
                 const bottomLimit = 0;
-                this.suggestionIndex += step;
-                if (this.suggestionIndex === topLimit + 1) {
-                    this.suggestionIndex = bottomLimit;
+                this.selectedSuggestionIndex += step;
+                if (this.selectedSuggestionIndex === topLimit + 1) {
+                    this.selectedSuggestionIndex = bottomLimit;
                 }
-                if (this.suggestionIndex === bottomLimit - 1) {
-                    this.suggestionIndex = topLimit;
+                if (this.selectedSuggestionIndex === bottomLimit - 1) {
+                    this.selectedSuggestionIndex = topLimit;
                 }
-                this.suggestText.setValue(this.suggestions[this.suggestionIndex]);
+                this.selectedSuggestionText.setValue(this.suggestions[this.selectedSuggestionIndex]);
             });
     }
 

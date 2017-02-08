@@ -8,7 +8,7 @@ export class SuggestService {
     constructor(private jsonp: Jsonp) {
     }
 
-    suggest(query: string) {
+    getSuggestions(query: string) {
         const search = new URLSearchParams();
 
         search.set('action', 'opensearch');

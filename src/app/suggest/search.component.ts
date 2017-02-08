@@ -31,9 +31,10 @@ export class SuggestComponent implements OnInit, OnDestroy {
           this.query.valueChanges
             .debounceTime(400)
             .distinctUntilChanged()
-            .switchMap(query => this.suggestService.suggest(query))
+            .switchMap(query => this.suggestService.getSuggestions(query))
             .subscribe((suggestions: string[]) => {
               this.suggestions = suggestions;
+              this.suggestionIndex = suggestions.length;
             }),
           this.navigateWithArrows()
         ];
@@ -51,7 +52,7 @@ export class SuggestComponent implements OnInit, OnDestroy {
             .map((event: any) => event.keyCode)
             .subscribe((keyCode: number) => {
                 const step = keyCode === Key.ArrowDown ? 1 : -1;
-                const topLimit = this.suggestions.length - 1;
+                const topLimit = this.suggestions.length;
                 const bottomLimit = 0;
                 this.suggestionIndex += step;
                 if (this.suggestionIndex === topLimit + 1) {
